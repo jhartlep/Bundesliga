@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><img ng-src="/images/vereine/{{vm.verein.short}}.svg" height="20" alt="{{verein.short}}" title="{{verein.name}}"> {{vm.verein.name}}</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <tr>
+                <th>Spiele</th>
+                <th>Siege</th>
+                <th>Unentschieden</th>
+                <th>Niederlagen</th>
+                <th>Tore</th>
+                <th>Tordifferenz</th>
+                <th>Punkte</th>
+            </tr>
+            <tr>
+                <td>{{vm.verein.spiele}}</td>
+                <td>{{vm.verein.siege}}</td>
+                <td>{{vm.verein.unentschieden}}</td>
+                <td>{{vm.verein.niederlagen}}</td>
+                <td>{{vm.verein.torePlus}}:{{vm.verein.toreMinus}}</td>
+                <td>{{vm.verein.tordifferenz}}</td>
+                <td>{{vm.verein.punkte}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel-footer clearfix">
+        <a href="/" class="btn btn-default pull-right">Zurück zur Übersicht</a>
+    </div>
+</div>

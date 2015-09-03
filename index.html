@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BundesligaApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Bundesliga">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="/images/favicon.ico">
+
+    <link rel="stylesheet" href="/libs/bower/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/libs/bower/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/libs/bower/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/bower/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+
+    <title>Bundesliga</title>
+    <base href="/">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-static-top" ng-include="'includes/commons/navbar.html'"></nav>
+
+<div class="container" ng-view></div>
+
+<script type="text/javascript" src="/libs/bower/underscore/underscore-min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular/angular.min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular-loading-bar/build/loading-bar.min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular-sanitize/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="/libs/bower/angular-mocks/angular-mocks.js"></script>
+
+<script type="text/javascript" src="/app/classes/Verein.js"></script>
+<script type="text/javascript" src="/app/classes/Spiel.js"></script>
+
+<script type="text/javascript" src="/app/app.js"></script>
+<script type="text/javascript" src="/app/mock.js"></script>
+
+<script type="text/javascript" src="/app/navbar/navbar-vm.js"></script>
+<script type="text/javascript" src="/app/vereine/vereine-vm.js"></script>
+<script type="text/javascript" src="/app/verein/verein-vm.js"></script>
+<script type="text/javascript" src="/app/spieltage/spieltage-vm.js"></script>
+<script type="text/javascript" src="/app/ergebnis/ergebnis-vm.js"></script>
+<script type="text/javascript" src="/app/tabelle/tabelle-vm.js"></script>
+
+</body>
+</html>

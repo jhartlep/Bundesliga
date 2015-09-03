@@ -1,0 +1,16 @@
+<table class="table table-striped">
+    <tr>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('id')">ID<i class="pull-right fa" ng-class="vm.sortType.id"></i></th>
+        <th>Logo</th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('name')">Name<i class="pull-right fa" ng-class="vm.sortType.name"></i></th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('short')">Short<i class="pull-right fa" ng-class="vm.sortType.short"></i></th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="verein in vm.vereine | orderBy:vm.sortColumn:vm.sortDirection">
+        <td>{{verein.id}}</td>
+        <td><img ng-src="/images/vereine/{{verein.short}}.svg" height="20" alt="{{verein.short}}" title="{{verein.name}}"></td>
+        <td>{{verein.name}}</td>
+        <td>{{verein.short}}</td>
+        <td><a href="/verein/{{verein.id}}">Details</a></td>
+    </tr>
+</table>

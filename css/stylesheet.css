@@ -1,0 +1,20 @@
+body {
+    overflow-y: scroll;
+}
+
+.navbar-brand {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+.autocomplete {
+    cursor: pointer;
+}
+
+.splitAction {
+    width: 150px;
+}
