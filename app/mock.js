@@ -1,241 +1,241 @@
 app.run(function ($httpBackend) {
 
-    var vereine = [
-        new Verein({id:  1, name: '1. FC Köln',               short: 'KOE'}),
-        new Verein({id:  2, name: '1. FSV Mainz 05',          short: 'M05'}),
-        new Verein({id:  3, name: 'Bayer 04 Leverkusen',      short: 'B04'}),
-        new Verein({id:  4, name: 'Borussia Dortmund',        short: 'BVB'}),
-        new Verein({id:  5, name: 'Borussia Mönchengladbach', short: 'BMG'}),
-        new Verein({id:  6, name: 'Eintracht Frankfurt',      short: 'SGE'}),
-        new Verein({id:  7, name: 'FC Augsburg',              short: 'FCA'}),
-        new Verein({id:  8, name: 'FC Bayern München',        short: 'FCB'}),
-        new Verein({id:  9, name: 'FC Ingolstadt 04',         short: 'FCI'}),
-        new Verein({id: 10, name: 'FC Schalke 04',            short: 'S04'}),
-        new Verein({id: 11, name: 'Hamburger SV',             short: 'HSV'}),
-        new Verein({id: 12, name: 'Hannover 96',              short: 'H96'}),
-        new Verein({id: 13, name: 'Hertha BSC',               short: 'BSC'}),
-        new Verein({id: 14, name: 'SV Darmstadt 98',          short: 'D98'}),
-        new Verein({id: 15, name: 'SV Werder Bremen',         short: 'BRE'}),
-        new Verein({id: 16, name: 'TSG 1899 Hoffenheim',      short: 'TSG'}),
-        new Verein({id: 17, name: 'VfB Stuttgart',            short: 'VFB'}),
-        new Verein({id: 18, name: 'VfL Wolfsburg',            short: 'WOB'})
+    var clubs = [
+        new Club({id:  1, name: '1. FC Köln',               shortcut: 'KOE'}),
+        new Club({id:  2, name: '1. FSV Mainz 05',          shortcut: 'M05'}),
+        new Club({id:  3, name: 'Bayer 04 Leverkusen',      shortcut: 'B04'}),
+        new Club({id:  4, name: 'Borussia Dortmund',        shortcut: 'BVB'}),
+        new Club({id:  5, name: 'Borussia Mönchengladbach', shortcut: 'BMG'}),
+        new Club({id:  6, name: 'Eintracht Frankfurt',      shortcut: 'SGE'}),
+        new Club({id:  7, name: 'FC Augsburg',              shortcut: 'FCA'}),
+        new Club({id:  8, name: 'FC Bayern München',        shortcut: 'FCB'}),
+        new Club({id:  9, name: 'FC Ingolstadt 04',         shortcut: 'FCI'}),
+        new Club({id: 10, name: 'FC Schalke 04',            shortcut: 'S04'}),
+        new Club({id: 11, name: 'Hamburger SV',             shortcut: 'HSV'}),
+        new Club({id: 12, name: 'Hannover 96',              shortcut: 'H96'}),
+        new Club({id: 13, name: 'Hertha BSC',               shortcut: 'BSC'}),
+        new Club({id: 14, name: 'SV Darmstadt 98',          shortcut: 'D98'}),
+        new Club({id: 15, name: 'SV Werder Bremen',         shortcut: 'BRE'}),
+        new Club({id: 16, name: 'TSG 1899 Hoffenheim',      shortcut: 'TSG'}),
+        new Club({id: 17, name: 'VfB Stuttgart',            shortcut: 'VFB'}),
+        new Club({id: 18, name: 'VfL Wolfsburg',            shortcut: 'WOB'})
     ];
 
-    var spieltagEins = [
-        new Spiel({id: 1, date: new Date(2015, 7, 14, 20, 30, 0, 0), heim: vereine[7],  gast: vereine[10]}),    // FCB:HSV
-        new Spiel({id: 2, date: new Date(2015, 7, 15, 15, 30, 0, 0), heim: vereine[14], gast: vereine[9]}),     // BRE:S04
-        new Spiel({id: 3, date: new Date(2015, 7, 15, 15, 30, 0, 0), heim: vereine[6],  gast: vereine[12]}),    // FCA:BSC
-        new Spiel({id: 4, date: new Date(2015, 7, 15, 15, 30, 0, 0), heim: vereine[2],  gast: vereine[15]}),    // B04:TSG
-        new Spiel({id: 5, date: new Date(2015, 7, 15, 15, 30, 0, 0), heim: vereine[13], gast: vereine[11]}),    // D98:H96
-        new Spiel({id: 6, date: new Date(2015, 7, 15, 15, 30, 0, 0), heim: vereine[1],  gast: vereine[8]}),     // M05:FCI
-        new Spiel({id: 7, date: new Date(2015, 7, 15, 18, 30, 0, 0), heim: vereine[3],  gast: vereine[4]}),     // BVB:BMG
-        new Spiel({id: 8, date: new Date(2015, 7, 16, 15, 30, 0, 0), heim: vereine[17], gast: vereine[5]}),     // WOB:SGE
-        new Spiel({id: 9, date: new Date(2015, 7, 16, 17, 30, 0, 0), heim: vereine[16], gast: vereine[0]})      // VFB:KOE
+    var matchDayOne = [
+        new Match({id: 1, date: new Date(2015, 7, 14, 20, 30, 0, 0), home: clubs[7],  visitor: clubs[10]}),    // FCB:HSV
+        new Match({id: 2, date: new Date(2015, 7, 15, 15, 30, 0, 0), home: clubs[14], visitor: clubs[9]}),     // BRE:S04
+        new Match({id: 3, date: new Date(2015, 7, 15, 15, 30, 0, 0), home: clubs[6],  visitor: clubs[12]}),    // FCA:BSC
+        new Match({id: 4, date: new Date(2015, 7, 15, 15, 30, 0, 0), home: clubs[2],  visitor: clubs[15]}),    // B04:TSG
+        new Match({id: 5, date: new Date(2015, 7, 15, 15, 30, 0, 0), home: clubs[13], visitor: clubs[11]}),    // D98:H96
+        new Match({id: 6, date: new Date(2015, 7, 15, 15, 30, 0, 0), home: clubs[1],  visitor: clubs[8]}),     // M05:FCI
+        new Match({id: 7, date: new Date(2015, 7, 15, 18, 30, 0, 0), home: clubs[3],  visitor: clubs[4]}),     // BVB:BMG
+        new Match({id: 8, date: new Date(2015, 7, 16, 15, 30, 0, 0), home: clubs[17], visitor: clubs[5]}),     // WOB:SGE
+        new Match({id: 9, date: new Date(2015, 7, 16, 17, 30, 0, 0), home: clubs[16], visitor: clubs[0]})      // VFB:KOE
     ];
 
-    var spieltagZwei = [
-        new Spiel({id: 1, date: new Date(2015, 7, 21, 20, 30, 0, 0), heim: vereine[12], gast: vereine[14]}),    // BSC:BRE
-        new Spiel({id: 2, date: new Date(2015, 7, 22, 15, 30, 0, 0), heim: vereine[9],  gast: vereine[13]}),    // S04:D98
-        new Spiel({id: 3, date: new Date(2015, 7, 22, 15, 30, 0, 0), heim: vereine[11], gast: vereine[2]}),     // H96:B04
-        new Spiel({id: 4, date: new Date(2015, 7, 22, 15, 30, 0, 0), heim: vereine[15], gast: vereine[7]}),     // TSG:FCB
-        new Spiel({id: 5, date: new Date(2015, 7, 22, 15, 30, 0, 0), heim: vereine[0],  gast: vereine[17]}),    // KOE:WOB
-        new Spiel({id: 6, date: new Date(2015, 7, 22, 15, 30, 0, 0), heim: vereine[5],  gast: vereine[6]}),     // SGE:FCA
-        new Spiel({id: 7, date: new Date(2015, 7, 22, 18, 30, 0, 0), heim: vereine[10], gast: vereine[16]}),    // HSV:VFB
-        new Spiel({id: 8, date: new Date(2015, 7, 23, 15, 30, 0, 0), heim: vereine[8],  gast: vereine[3]}),     // FCI:BVB
-        new Spiel({id: 9, date: new Date(2015, 7, 23, 17, 30, 0, 0), heim: vereine[4],  gast: vereine[1]})      // BMG:M05
+    var matchDayTwo = [
+        new Match({id: 1, date: new Date(2015, 7, 21, 20, 30, 0, 0), home: clubs[12], visitor: clubs[14]}),    // BSC:BRE
+        new Match({id: 2, date: new Date(2015, 7, 22, 15, 30, 0, 0), home: clubs[9],  visitor: clubs[13]}),    // S04:D98
+        new Match({id: 3, date: new Date(2015, 7, 22, 15, 30, 0, 0), home: clubs[11], visitor: clubs[2]}),     // H96:B04
+        new Match({id: 4, date: new Date(2015, 7, 22, 15, 30, 0, 0), home: clubs[15], visitor: clubs[7]}),     // TSG:FCB
+        new Match({id: 5, date: new Date(2015, 7, 22, 15, 30, 0, 0), home: clubs[0],  visitor: clubs[17]}),    // KOE:WOB
+        new Match({id: 6, date: new Date(2015, 7, 22, 15, 30, 0, 0), home: clubs[5],  visitor: clubs[6]}),     // SGE:FCA
+        new Match({id: 7, date: new Date(2015, 7, 22, 18, 30, 0, 0), home: clubs[10], visitor: clubs[16]}),    // HSV:VFB
+        new Match({id: 8, date: new Date(2015, 7, 23, 15, 30, 0, 0), home: clubs[8],  visitor: clubs[3]}),     // FCI:BVB
+        new Match({id: 9, date: new Date(2015, 7, 23, 17, 30, 0, 0), home: clubs[4],  visitor: clubs[1]})      // BMG:M05
     ];
 
-    var spieltagDrei = [
-        new Spiel({id: 1, date: new Date(2015, 7, 28, 20, 30, 0, 0), heim: vereine[17], gast: vereine[9]}),     // WOB:S04
-        new Spiel({id: 2, date: new Date(2015, 7, 29, 15, 30, 0, 0), heim: vereine[13], gast: vereine[15]}),    // D98:TSG
-        new Spiel({id: 3, date: new Date(2015, 7, 29, 15, 30, 0, 0), heim: vereine[1],  gast: vereine[11]}),    // M05:H96
-        new Spiel({id: 4, date: new Date(2015, 7, 29, 15, 30, 0, 0), heim: vereine[6],  gast: vereine[8]}),     // FCA:FCI
-        new Spiel({id: 5, date: new Date(2015, 7, 29, 15, 30, 0, 0), heim: vereine[16], gast: vereine[5]}),     // VFB:SGE
-        new Spiel({id: 6, date: new Date(2015, 7, 29, 15, 30, 0, 0), heim: vereine[0],  gast: vereine[10]}),    // KOE:HSV
-        new Spiel({id: 7, date: new Date(2015, 7, 29, 18, 30, 0, 0), heim: vereine[7],  gast: vereine[2]}),     // FCB:B04
-        new Spiel({id: 8, date: new Date(2015, 7, 30, 15, 30, 0, 0), heim: vereine[3],  gast: vereine[12]}),    // BVB:BSC
-        new Spiel({id: 9, date: new Date(2015, 7, 30, 17, 30, 0, 0), heim: vereine[14], gast: vereine[4]})      // BRE:BMG
+    var matchDayThree = [
+        new Match({id: 1, date: new Date(2015, 7, 28, 20, 30, 0, 0), home: clubs[17], visitor: clubs[9]}),     // WOB:S04
+        new Match({id: 2, date: new Date(2015, 7, 29, 15, 30, 0, 0), home: clubs[13], visitor: clubs[15]}),    // D98:TSG
+        new Match({id: 3, date: new Date(2015, 7, 29, 15, 30, 0, 0), home: clubs[1],  visitor: clubs[11]}),    // M05:H96
+        new Match({id: 4, date: new Date(2015, 7, 29, 15, 30, 0, 0), home: clubs[6],  visitor: clubs[8]}),     // FCA:FCI
+        new Match({id: 5, date: new Date(2015, 7, 29, 15, 30, 0, 0), home: clubs[16], visitor: clubs[5]}),     // VFB:SGE
+        new Match({id: 6, date: new Date(2015, 7, 29, 15, 30, 0, 0), home: clubs[0],  visitor: clubs[10]}),    // KOE:HSV
+        new Match({id: 7, date: new Date(2015, 7, 29, 18, 30, 0, 0), home: clubs[7],  visitor: clubs[2]}),     // FCB:B04
+        new Match({id: 8, date: new Date(2015, 7, 30, 15, 30, 0, 0), home: clubs[3],  visitor: clubs[12]}),    // BVB:BSC
+        new Match({id: 9, date: new Date(2015, 7, 30, 17, 30, 0, 0), home: clubs[14], visitor: clubs[4]})      // BRE:BMG
     ];
 
-    var spieltagVier = [
-        new Spiel({id: 1, date: new Date(2015, 8, 11, 20, 30, 0, 0), heim: vereine[4],  gast: vereine[10]}),    // BMG:HSV
-        new Spiel({id: 2, date: new Date(2015, 8, 12, 15, 30, 0, 0), heim: vereine[7],  gast: vereine[6]}),     // FCB:FCA
-        new Spiel({id: 3, date: new Date(2015, 8, 12, 15, 30, 0, 0), heim: vereine[2],  gast: vereine[13]}),    // B04:D98
-        new Spiel({id: 4, date: new Date(2015, 8, 12, 15, 30, 0, 0), heim: vereine[12], gast: vereine[16]}),    // BSC:VFB
-        new Spiel({id: 5, date: new Date(2015, 8, 12, 15, 30, 0, 0), heim: vereine[11], gast: vereine[3]}),     // H96:BVB
-        new Spiel({id: 6, date: new Date(2015, 8, 12, 15, 30, 0, 0), heim: vereine[8],  gast: vereine[17]}),    // FCI:WOB
-        new Spiel({id: 7, date: new Date(2015, 8, 12, 18, 30, 0, 0), heim: vereine[5],  gast: vereine[0]}),     // SGE:KOE
-        new Spiel({id: 8, date: new Date(2015, 8, 13, 15, 30, 0, 0), heim: vereine[15], gast: vereine[14]}),    // TSG:BRE
-        new Spiel({id: 9, date: new Date(2015, 8, 13, 17, 30, 0, 0), heim: vereine[9],  gast: vereine[1]})      // S04:M05
+    var matchDayFour = [
+        new Match({id: 1, date: new Date(2015, 8, 11, 20, 30, 0, 0), home: clubs[4],  visitor: clubs[10]}),    // BMG:HSV
+        new Match({id: 2, date: new Date(2015, 8, 12, 15, 30, 0, 0), home: clubs[7],  visitor: clubs[6]}),     // FCB:FCA
+        new Match({id: 3, date: new Date(2015, 8, 12, 15, 30, 0, 0), home: clubs[2],  visitor: clubs[13]}),    // B04:D98
+        new Match({id: 4, date: new Date(2015, 8, 12, 15, 30, 0, 0), home: clubs[12], visitor: clubs[16]}),    // BSC:VFB
+        new Match({id: 5, date: new Date(2015, 8, 12, 15, 30, 0, 0), home: clubs[11], visitor: clubs[3]}),     // H96:BVB
+        new Match({id: 6, date: new Date(2015, 8, 12, 15, 30, 0, 0), home: clubs[8],  visitor: clubs[17]}),    // FCI:WOB
+        new Match({id: 7, date: new Date(2015, 8, 12, 18, 30, 0, 0), home: clubs[5],  visitor: clubs[0]}),     // SGE:KOE
+        new Match({id: 8, date: new Date(2015, 8, 13, 15, 30, 0, 0), home: clubs[15], visitor: clubs[14]}),    // TSG:BRE
+        new Match({id: 9, date: new Date(2015, 8, 13, 17, 30, 0, 0), home: clubs[9],  visitor: clubs[1]})      // S04:M05
     ];
 
-    var ergebnisse = [
+    var results = [
         [
-            { spiel: spieltagEins[0], ergebnis: {heim: 5, gast: 0} },
-            { spiel: spieltagEins[1], ergebnis: {heim: 0, gast: 3} },
-            { spiel: spieltagEins[2], ergebnis: {heim: 0, gast: 1} },
-            { spiel: spieltagEins[3], ergebnis: {heim: 2, gast: 1} },
-            { spiel: spieltagEins[4], ergebnis: {heim: 2, gast: 2} },
-            { spiel: spieltagEins[5], ergebnis: {heim: 0, gast: 1} },
-            { spiel: spieltagEins[6], ergebnis: {heim: 4, gast: 0} },
-            { spiel: spieltagEins[7], ergebnis: {heim: 2, gast: 1} },
-            { spiel: spieltagEins[8], ergebnis: {heim: 1, gast: 3} }
+            { match: matchDayOne[0], result: {home: 5, visitor: 0} },
+            { match: matchDayOne[1], result: {home: 0, visitor: 3} },
+            { match: matchDayOne[2], result: {home: 0, visitor: 1} },
+            { match: matchDayOne[3], result: {home: 2, visitor: 1} },
+            { match: matchDayOne[4], result: {home: 2, visitor: 2} },
+            { match: matchDayOne[5], result: {home: 0, visitor: 1} },
+            { match: matchDayOne[6], result: {home: 4, visitor: 0} },
+            { match: matchDayOne[7], result: {home: 2, visitor: 1} },
+            { match: matchDayOne[8], result: {home: 1, visitor: 3} }
         ],
         [
-            { spiel: spieltagZwei[0], ergebnis: {heim: 1, gast: 1} },
-            { spiel: spieltagZwei[1], ergebnis: {heim: 1, gast: 1} },
-            { spiel: spieltagZwei[2], ergebnis: {heim: 0, gast: 1} },
-            { spiel: spieltagZwei[3], ergebnis: {heim: 1, gast: 2} },
-            { spiel: spieltagZwei[4], ergebnis: {heim: 1, gast: 1} },
-            { spiel: spieltagZwei[5], ergebnis: {heim: 1, gast: 1} },
-            { spiel: spieltagZwei[6], ergebnis: {heim: 3, gast: 2} },
-            { spiel: spieltagZwei[7], ergebnis: {heim: 0, gast: 4} },
-            { spiel: spieltagZwei[8], ergebnis: {heim: 1, gast: 2} }
+            { match: matchDayTwo[0], result: {home: 1, visitor: 1} },
+            { match: matchDayTwo[1], result: {home: 1, visitor: 1} },
+            { match: matchDayTwo[2], result: {home: 0, visitor: 1} },
+            { match: matchDayTwo[3], result: {home: 1, visitor: 2} },
+            { match: matchDayTwo[4], result: {home: 1, visitor: 1} },
+            { match: matchDayTwo[5], result: {home: 1, visitor: 1} },
+            { match: matchDayTwo[6], result: {home: 3, visitor: 2} },
+            { match: matchDayTwo[7], result: {home: 0, visitor: 4} },
+            { match: matchDayTwo[8], result: {home: 1, visitor: 2} }
         ],
         [
-            { spiel: spieltagDrei[0], ergebnis: {heim: 3, gast: 0} },
-            { spiel: spieltagDrei[1], ergebnis: {heim: 0, gast: 0} },
-            { spiel: spieltagDrei[2], ergebnis: {heim: 3, gast: 0} },
-            { spiel: spieltagDrei[3], ergebnis: {heim: 0, gast: 1} },
-            { spiel: spieltagDrei[4], ergebnis: {heim: 1, gast: 4} },
-            { spiel: spieltagDrei[5], ergebnis: {heim: 2, gast: 1} },
-            { spiel: spieltagDrei[6], ergebnis: {heim: 3, gast: 0} },
-            { spiel: spieltagDrei[7], ergebnis: {heim: 3, gast: 1} },
-            { spiel: spieltagDrei[8], ergebnis: {heim: 2, gast: 1} }
+            { match: matchDayThree[0], result: {home: 3, visitor: 0} },
+            { match: matchDayThree[1], result: {home: 0, visitor: 0} },
+            { match: matchDayThree[2], result: {home: 3, visitor: 0} },
+            { match: matchDayThree[3], result: {home: 0, visitor: 1} },
+            { match: matchDayThree[4], result: {home: 1, visitor: 4} },
+            { match: matchDayThree[5], result: {home: 2, visitor: 1} },
+            { match: matchDayThree[6], result: {home: 3, visitor: 0} },
+            { match: matchDayThree[7], result: {home: 3, visitor: 1} },
+            { match: matchDayThree[8], result: {home: 2, visitor: 1} }
         ]
     ];
 
-    var spieltage = [
-        {id: 1, spieltag: spieltagEins},
-        {id: 2, spieltag: spieltagZwei},
-        {id: 3, spieltag: spieltagDrei},
-        {id: 4, spieltag: spieltagVier}
+    var matchDays = [
+        {id: 1, matchDay: matchDayOne},
+        {id: 2, matchDay: matchDayTwo},
+        {id: 3, matchDay: matchDayThree},
+        {id: 4, matchDay: matchDayFour}
     ];
 
     var regExIncludes = new RegExp('includes/(.+)');
     var regExPartials = new RegExp('partials/(.+)');
     var regExTypeahead = new RegExp('template/typeahead/(.+)');
 
-    var regExVerein = new RegExp('rest/vereine/([0-9]+)');
-    var regExSpiel = new RegExp('rest/spieltage/([0-9]+)/([0-9]+)');
-    var regExSpieltag = new RegExp('rest/spieltag/([0-9]+)');
-    var regExtBulkOne = new RegExp('rest/bulk/([0-9]+)');
+    var regExClub = new RegExp('rest/clubs/([0-9]+)');
+    var regExMatch = new RegExp('rest/matchdays/([0-9]+)/([0-9]+)');
+    var regExMatchDay = new RegExp('rest/matchday/([0-9]+)');
+    var regExBulkOne = new RegExp('rest/bulk/([0-9]+)');
 
-    // GET: /rest/vereine
-    $httpBackend.whenGET('/rest/vereine').respond(vereine);
-    // GET: /rest/spieltage
-    $httpBackend.whenGET('/rest/spieltage').respond(spieltage);
+    // GET: /rest/clubs
+    $httpBackend.whenGET('/rest/clubs').respond(clubs);
+    // GET: /rest/matchdays
+    $httpBackend.whenGET('/rest/matchdays').respond(matchDays);
 
-    // GET: /rest/vereine/:id
+    // GET: /rest/clubs/:id
     $httpBackend.whenGET({
         test: function (url) {
-            return regExVerein.test(url);
+            return regExClub.test(url);
         }
     }).respond(function (method, url) {
-        var id = parseInt(url.match(regExVerein)[1]);
-        var index = _.findIndex(vereine, {id: id});
+        var id = parseInt(url.match(regExClub)[1]);
+        var index = _.findIndex(clubs, {id: id});
 
-        return index === -1 ? [404, 'Not found'] : [200, vereine[index]];
+        return index === -1 ? [404, 'Not found'] : [200, clubs[index]];
     });
 
-    // GET: /rest/spieltag/:id
+    // GET: /rest/matchday/:id
     $httpBackend.whenGET({
         test: function (url) {
-            return regExSpieltag.test(url);
+            return regExMatchDay.test(url);
         }
     }).respond(function (method, url) {
-        var id = parseInt(url.match(regExSpieltag)[1]);
-        var index = _.findIndex(spieltage, {id: id});
+        var id = parseInt(url.match(regExMatchDay)[1]);
+        var index = _.findIndex(matchDays, {id: id});
 
-        return index === -1 ? [404, 'Not found'] : [200, spieltage[index]];
+        return index === -1 ? [404, 'Not found'] : [200, matchDays[index]];
     });
 
     $httpBackend.whenGET({
         test: function (url) {
-            return regExtBulkOne.test(url);
+            return regExBulkOne.test(url);
         }
     }).respond(function (method, url) {
-        var id = parseInt(url.match(regExtBulkOne)[1]);
+        var id = parseInt(url.match(regExBulkOne)[1]);
 
-        return [200, ergebnisse[id - 1]];
+        return [200, results[id - 1]];
     });
 
-    // GET: /rest/spieltage/:spieltag/:spiel
+    // GET: /rest/matchdays/:matchDay/:match
     $httpBackend.whenGET({
         test: function (url) {
-            return regExSpiel.test(url);
+            return regExMatch.test(url);
         }
     }).respond(function (method, url) {
-        var match = url.match(regExSpiel);
-        var spieltag = parseInt(match[1]);
-        var spiel = parseInt(match[2]);
-        var indexSpieltag = _.findIndex(spieltage, {id: spieltag});
-        var indexSpiel = _.findIndex(spieltage[indexSpieltag].spieltag, {id: spiel});
+        var urlMatch = url.match(regExMatch);
+        var matchDay = parseInt(urlMatch[1]);
+        var match = parseInt(urlMatch[2]);
+        var indexMatchDay = _.findIndex(matchDays, {id: matchDay});
+        var indexMatch = _.findIndex(matchDays[indexMatchDay].matchDay, {id: match});
 
-        return (indexSpieltag === -1 || indexSpiel === -1) ? [404, 'Not found'] : [200, spieltage[indexSpieltag].spieltag[indexSpiel]];
+        return (indexMatchDay === -1 || indexMatch === -1) ? [404, 'Not found'] : [200, matchDays[indexMatchDay].matchDay[indexMatch]];
     });
 
-    // PUT: /rest/spieltage/:spieltag/:spiel {ergebnis}
+    // PUT: /rest/matchdays/:matchDay/:match {result}
     $httpBackend.whenPUT({
         test: function (url) {
-            return regExSpiel.test(url);
+            return regExMatch.test(url);
         }
-    }).respond(function (method, url, ergebnis) {
-        var match = url.match(regExSpiel);
-        var spieltag = parseInt(match[1]);
-        var spiel = parseInt(match[2]);
-        var indexSpieltage = _.findIndex(spieltage, {id: spieltag});
-        var indexSpiel = _.findIndex(spieltage[indexSpieltage].spieltag, {id: spiel});
+    }).respond(function (method, url, result) {
+        var urlMatch = url.match(regExMatch);
+        var matchDay = parseInt(urlMatch[1]);
+        var match = parseInt(urlMatch[2]);
+        var indexMatchDays = _.findIndex(matchDays, {id: matchDay});
+        var indexMatch = _.findIndex(matchDays[indexMatchDays].matchDay, {id: match});
 
-        var heim = spieltage[indexSpieltage].spieltag[indexSpiel].heim;
-        var gast = spieltage[indexSpieltage].spieltag[indexSpiel].gast;
-        var begegnung = spieltage[indexSpieltage].spieltag[indexSpiel];
+        var home = matchDays[indexMatchDays].matchDay[indexMatch].home;
+        var visitor = matchDays[indexMatchDays].matchDay[indexMatch].visitor;
+        var encounter = matchDays[indexMatchDays].matchDay[indexMatch];
 
-        ergebnis = JSON.parse(ergebnis);
+        result = JSON.parse(result);
 
-        if (begegnung.hasResult) {
+        if (encounter.hasResult) {
             return [403, 'Not possible yet'];
         }
 
-        if ((ergebnis.heim !== undefined && ergebnis.heim !== null) && (ergebnis.gast !== undefined && ergebnis.gast !== null)) {
-            begegnung.toreHeim = ergebnis.heim;
-            begegnung.toreGast = ergebnis.gast;
-            begegnung.hasResult = true;
+        if ((result.home !== undefined && result.home !== null) && (result.visitor !== undefined && result.visitor !== null)) {
+            encounter.goalsHome = result.home;
+            encounter.goalsVisitor = result.visitor;
+            encounter.hasResult = true;
 
-            heim.torePlus += ergebnis.heim;
-            heim.toreMinus += ergebnis.gast;
-            heim.tordifferenz = heim.torePlus - heim.toreMinus;
+            home.goalsShot += result.home;
+            home.goalsTaken += result.visitor;
+            home.goalsDiff = home.goalsShot - home.goalsTaken;
 
-            gast.torePlus += ergebnis.gast;
-            gast.toreMinus += ergebnis.heim;
-            gast.tordifferenz = gast.torePlus - gast.toreMinus;
+            visitor.goalsShot += result.visitor;
+            visitor.goalsTaken += result.home;
+            visitor.goalsDiff = visitor.goalsShot - visitor.goalsTaken;
 
-            heim.spiele += 1;
-            gast.spiele += 1;
+            home.matches += 1;
+            visitor.matches += 1;
 
-            if (ergebnis.heim > ergebnis.gast) { // Sieger Heim
-                heim.siege += 1;
-                gast.niederlagen += 1;
-                heim.punkte += 3;
-            } else if (ergebnis.heim < ergebnis.gast) { // Sieger Gast
-                gast.siege += 1;
-                heim.niederlagen += 1;
-                gast.punkte += 3;
+            if (result.home > result.visitor) { // Sieger Heim
+                home.victories += 1;
+                visitor.defeats += 1;
+                home.points += 3;
+            } else if (result.home < result.visitor) { // Sieger Gast
+                visitor.victories += 1;
+                home.defeats += 1;
+                visitor.points += 3;
             } else {
-                heim.unentschieden += 1;
-                gast.unentschieden += 1;
-                heim.punkte += 1;
-                gast.punkte += 1;
+                home.draws += 1;
+                visitor.draws += 1;
+                home.points += 1;
+                visitor.points += 1;
             }
         } else {
             return [400, 'Missing Result Object'];
         }
 
-        return [200, begegnung];
+        return [200, encounter];
     });
 
     // GET: /rest/bulk
-    $httpBackend.whenGET('/rest/bulk').respond(ergebnisse);
+    $httpBackend.whenGET('/rest/bulk').respond(results);
 
     $httpBackend.whenGET({
         test: function (url) {

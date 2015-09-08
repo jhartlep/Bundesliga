@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{vm.match.home.name}} : {{vm.match.visitor.name}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <span class="input-group-addon" id="heimAddon"><img ng-src="/images/clubs/{{vm.match.home.shortcut}}.svg" height="18"> {{vm.match.home.shortcut}}</span>
+                    <input type="number" class="form-control" placeholder="{{vm.match.home.name}}" aria-describedby="heimAddon" ng-model="vm.match.goalsHome">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="number" class="form-control" placeholder="{{vm.match.visitor.name}}" aria-describedby="gastAddon" ng-model="vm.match.goalsVisitor">
+                    <span class="input-group-addon" id="gastAddon">{{vm.match.visitor.shortcut}} <img ng-src="/images/clubs/{{vm.match.visitor.shortcut}}.svg" height="18"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer clearfix">
+        <button class="btn btn-success" ng-click="vm.saveResult()">Ergebnis speichern</button>
+        <a href="/matchdays" class="btn btn-default pull-right">Zurück zum Spielplan</a>
+    </div>
+</div>

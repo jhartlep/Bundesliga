@@ -1,17 +1,13 @@
-var TabelleVM = function ($http) {
+var ClubsVM = function ($http) {
     var self = this;
 
-    this.sortColumn = ['-punkte', '-tordifferenz'];
+    this.sortColumn = 'id';
     this.sortDirection = false;
 
     this.sortType = {
+        id: 'fa-sort-desc',
         name: 'fa-sort',
-        spiele: 'fa-sort',
-        siege: 'fa-sort',
-        unentschieden: 'fa-sort',
-        niederlagen: 'fa-sort',
-        tordifferenz: 'fa-sort',
-        punkte: 'fa-sort'
+        shortcut: 'fa-sort'
     };
 
     this.setSortColumn = function (columnName) {
@@ -31,8 +27,8 @@ var TabelleVM = function ($http) {
         });
     };
 
-    $http.get('/rest/vereine').then(function (result) {
-        self.vereine = result.data;
+    $http.get('/rest/clubs').then(function (result) {
+        self.clubs = result.data;
     }).catch(function (result) {
         console.log(result);
     });

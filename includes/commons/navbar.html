@@ -13,16 +13,16 @@
     <div class="collapse navbar-collapse" id="navbar-collapse">
         <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Verein" ng-model="vm.vereinSelected"
-                       typeahead="verein as verein.name for verein in vm.vereine | filter:$viewValue"
+                <input type="text" class="form-control" placeholder="Verein" ng-model="vm.clubSelected"
+                       typeahead="club as club.name for club in vm.clubs | filter:$viewValue"
                        typeahead-template-url="/includes/commons/autocomplete.html" typeahead-select-on-exact="true" typeahead-on-select="vm.onSelect()">
             </div>
-            <button type="submit" class="btn btn-default" ng-click="vm.loadVerein()" ng-disabled="vm.readOnly">Suchen</button>
+            <button type="submit" class="btn btn-default" ng-click="vm.loadClub()" ng-disabled="vm.readOnly">Suchen</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li ng-class="{ active: vm.isActive('/') }"><a href="/">Vereinsliste</a></li>
-            <li ng-class="{ active: vm.isActive('/spieltage') }"><a href="/spieltage">Spielplan</a></li>
-            <li ng-class="{ active: vm.isActive('/tabelle') }"><a href="/tabelle">Tabelle</a></li>
+            <li ng-class="{ active: vm.isActive('/matchdays') }"><a href="/matchdays">Spielplan</a></li>
+            <li ng-class="{ active: vm.isActive('/table') }"><a href="/table">Tabelle</a></li>
         </ul>
     </div>
 </div>

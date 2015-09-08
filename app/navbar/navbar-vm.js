@@ -1,8 +1,8 @@
 var NavbarVM = function ($location, $http) {
     var self = this;
 
-    this.vereine = [];
-    this.vereinSelected = undefined;
+    this.clubs = [];
+    this.clubSelected = undefined;
     this.readOnly = true;
 
     this.isActive = function (viewLocation) {
@@ -13,14 +13,14 @@ var NavbarVM = function ($location, $http) {
         self.readOnly = false;
     };
 
-    this.loadVerein = function () {
-        if (undefined !== self.vereinSelected.id) {
-            $location.path('/verein/' + self.vereinSelected.id);
+    this.loadClub = function () {
+        if (undefined !== self.clubSelected.id) {
+            $location.path('/club/' + self.clubSelected.id);
         }
     };
 
-    $http.get('/rest/vereine').then(function (result) {
-        self.vereine = result.data;
+    $http.get('/rest/clubs').then(function (result) {
+        self.clubs = result.data;
     }).catch(function (result) {
         console.log(result);
     })

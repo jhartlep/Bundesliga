@@ -11,24 +11,24 @@ var app = angular.module('BundesligaApp', [
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: '/partials/vereine/routing.liste.html',
-            controller: 'VereineCtrl'
+            templateUrl: '/partials/clubs/routing.list.html',
+            controller: 'ClubsCtrl'
         })
-        .when('/verein/:id', {
-            templateUrl: '/partials/vereine/routing.details.html',
-            controller: 'VereinCtrl'
+        .when('/club/:id', {
+            templateUrl: '/partials/clubs/routing.details.html',
+            controller: 'ClubCtrl'
         })
-        .when('/spieltage', {
-            templateUrl: '/partials/spieltage/routing.liste.html',
-            controller: 'SpieltageCtrl'
+        .when('/matchdays', {
+            templateUrl: '/partials/matchDays/routing.list.html',
+            controller: 'MatchDaysCtrl'
         })
-        .when('/spieltage/:spieltag/:spiel', {
-            templateUrl: '/partials/spieltage/routing.ergebnis.html',
-            controller: 'ErgebnisCtrl'
+        .when('/matchdays/:matchDay/:match', {
+            templateUrl: '/partials/matchDays/routing.result.html',
+            controller: 'ResultCtrl'
         })
-        .when('/tabelle', {
-            templateUrl: '/partials/tabelle/routing.tabelle.html',
-            controller: 'TabelleCtrl'
+        .when('/table', {
+            templateUrl: '/partials/table/routing.table.html',
+            controller: 'TableCtrl'
         })
         .otherwise({
             redirectTo: '/'
@@ -46,24 +46,24 @@ app.filter('ifUndefinedOrNull', function () {
     }
 });
 
-app.controller('VereineCtrl', function ($scope, $http) {
-    $scope.vm = new VereineVM($http);
+app.controller('ClubsCtrl', function ($scope, $http) {
+    $scope.vm = new ClubsVM($http);
 });
 
-app.controller('VereinCtrl', function ($scope, $http, $routeParams) {
-    $scope.vm = new VereinVM($http, $routeParams);
+app.controller('ClubCtrl', function ($scope, $http, $routeParams) {
+    $scope.vm = new ClubVM($http, $routeParams);
 });
 
-app.controller('SpieltageCtrl', function ($scope, $http, $route) {
-    $scope.vm = new SpieltageVM($http, $route);
+app.controller('MatchDaysCtrl', function ($scope, $http, $route) {
+    $scope.vm = new MatchDaysVM($http, $route);
 });
 
-app.controller('ErgebnisCtrl', function ($scope, $http, $routeParams, $location) {
-    $scope.vm = new ErgebnisVM($http, $routeParams, $location);
+app.controller('ResultCtrl', function ($scope, $http, $routeParams, $location) {
+    $scope.vm = new ResultVM($http, $routeParams, $location);
 });
 
-app.controller('TabelleCtrl', function ($scope, $http) {
-    $scope.vm = new TabelleVM($http);
+app.controller('TableCtrl', function ($scope, $http) {
+    $scope.vm = new TableVM($http);
 });
 
 app.controller('NavbarCtrl', function ($scope, $location, $http) {

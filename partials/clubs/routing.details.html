@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><img ng-src="/images/vereine/{{vm.verein.short}}.svg" height="20" alt="{{verein.short}}" title="{{verein.name}}"> {{vm.verein.name}}</h3>
+        <h3 class="panel-title"><img ng-src="/images/clubs/{{vm.club.shortcut}}.svg" height="20" alt="{{vm.club.shortcut}}" title="{{vm.club.name}}">{{vm.club.name}}</h3>
     </div>
     <div class="panel-body">
         <table class="table table-striped">
@@ -14,13 +14,13 @@
                 <th>Punkte</th>
             </tr>
             <tr>
-                <td>{{vm.verein.spiele}}</td>
-                <td>{{vm.verein.siege}}</td>
-                <td>{{vm.verein.unentschieden}}</td>
-                <td>{{vm.verein.niederlagen}}</td>
-                <td>{{vm.verein.torePlus}}:{{vm.verein.toreMinus}}</td>
-                <td>{{vm.verein.tordifferenz}}</td>
-                <td>{{vm.verein.punkte}}</td>
+                <td>{{vm.club.matches}}</td>
+                <td>{{vm.club.victories}}</td>
+                <td>{{vm.club.draws}}</td>
+                <td>{{vm.club.defeats}}</td>
+                <td>{{vm.club.goalsShot}}:{{vm.club.goalsTaken}}</td>
+                <td>{{vm.club.goalsDiff}}</td>
+                <td>{{vm.club.points}}</td>
             </tr>
         </table>
     </div>

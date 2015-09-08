@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <tr>
+        <th>Platz</th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('name')">Verein<i class="pull-right fa" ng-class="vm.sortType.name"></i></th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('matches')">Spiele<i class="pull-right fa" ng-class="vm.sortType.matches"></i></th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('victories')">Siege<i class="pull-right fa" ng-class="vm.sortType.victories"></i></th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('draws')">Unentschieden<i class="pull-right fa" ng-class="vm.sortType.draws"></i></th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('defeats')">Niederlagen<i class="pull-right fa" ng-class="vm.sortType.defeats"></i></th>
+        <th>Tore</th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('goalsDiff')">Tordifferenz<i class="pull-right fa" ng-class="vm.sortType.goalsDiff"></i></th>
+        <th class="clearfix sortable" ng-click="vm.setSortColumn('points')">Punkte<i class="pull-right fa" ng-class="vm.sortType.points"></i></th>
+    </tr>
+    <tr ng-repeat="(position, club) in vm.clubs | orderBy:vm.sortColumn:vm.sortDirection">
+        <td>{{position + 1}}</td>
+        <td><img ng-src="/images/clubs/{{club.shortcut}}.svg" height="18"> {{club.name}}</td>
+        <td>{{club.matches}}</td>
+        <td>{{club.victories}}</td>
+        <td>{{club.draws}}</td>
+        <td>{{club.defeats}}</td>
+        <td>{{club.goalsShot}}:{{club.goalsTaken}}</td>
+        <td>{{club.goalsDiff}}</td>
+        <td>{{club.points}}</td>
+    </tr>
+</table>
