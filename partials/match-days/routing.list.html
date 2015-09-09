@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h2 class="panel-title">Spieltage</h2>
+        <div class="btn-toolbar" role="toolbar" aria-label="Spieltage">
+            <div class="btn-group" role="group" aria-label="Hinrunde">
+                <button class="btn btn-info firstLegs" ng-click="vm.clearMatchDay()">Hinrunde</button>
+                <button class="btn btn-default matchDayButton" type="button" ng-repeat="n in [] | matchDayRange:1:18" ng-click="vm.selectMatchDay(n)">{{n}}</button>
+            </div>
+            <div class="btn-group" role="group" aria-label="Rückrunde">
+                <button class="btn btn-info secondLegs" ng-click="vm.clearMatchDay()">Rückrunde</button>
+                <button class="btn btn-default matchDayButton" type="button" ng-repeat="n in [] | matchDayRange:18:35" ng-click="vm.selectMatchDay(n)">{{n}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <tr>
+                <th>Datum</th>
+                <th>Begegnung</th>
+                <th>Ergebnis</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="match in vm.matchDay">
+                <td>{{match.date | date: 'dd. MMM yyyy - HH:mm'}}</td>
+                <td class="clearfix">
+                    <span class="matchEncounter">
+                        <span class="pull-left">{{match.home.shortcut}}</span>
+                        <img ng-src="/images/clubs/{{match.home.shortcut}}.svg" height="18" alt="{{match.home.shortcut}}" title="{{match.home.name}}" class="pull-right">
+                    </span><span class="matchDivider">:</span>
+                    <span class="matchEncounter">
+                        <img ng-src="/images/clubs/{{match.visitor.shortcut}}.svg" height="18" alt="{{match.visitor.shortcut}}" title="{{match.visitor.name}}" class="pull-left">
+                        <span class="pull-right">{{match.visitor.shortcut}}</span>
+                    </span>
+
+                </td>
+                <td>{{match.goalsHome | number |ifUndefinedOrNull:'-' }} : {{match.goalsVisitor | number |ifUndefinedOrNull:'-' }}</td>
+                <td><a href="/matchdays/{{match.matchDay}}/{{match.id}}">Ergebnis eintragen</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="btn-group pull-right" dropdown>
+            <button id="split-button" type="button" class="btn btn-danger" ng-disabled="!vm.hasMatches">Ergebnisse für Spieltag eintragen</button>
+            <button type="button" class="btn btn-danger" dropdown-toggle ng-disabled="vm.hasMatches">
+                <span class="caret"></span>
+                <span class="sr-only">Split button!</span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">
+                <li role="menuitem"><a href ng-click="">Ergebnisse für alle Spieltage eintragen</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

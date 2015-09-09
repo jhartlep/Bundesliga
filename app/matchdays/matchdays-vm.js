@@ -1,25 +1,23 @@
-var MatchDaysVM = function ($http, $route) {
+var MatchDaysVM = function ($http, $route, baseUrl) {
     var self = this;
 
-    this.splitAction = "Spieltag ausw\u00e4hlen";
-    this.matchdays = [];
-    this.matchDay = {};
+    this.matches = [];
+    this.matchDay = [];
+    this.hasMatches = false;
 
     this.selectMatchDay = function (id) {
-        self.splitAction = id + ". Spieltag";
-
-        $http.get('/rest/matchday/' + id).then(function (result) {
+        $http.get(baseUrl + 'matches/' + id).then(function (result) {
             self.matchDay = result.data;
+            self.hasMatches = true;
         }).catch(function (result) {
             console.log(result);
         });
     };
 
-    $http.get('/rest/matchdays').then(function (result) {
-        self.matchdays = result.data;
-    }).catch(function (result) {
-        console.log(result);
-    });
+    this.clearMatchDay = function () {
+        self.matchDay = [];
+        self.hasMatches = false;
+    };
 
     this.setBulkForMatchDay = function () {
         if (angular.equals({}, self.matchDay)) {

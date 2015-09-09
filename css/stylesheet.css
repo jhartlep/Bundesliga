@@ -18,3 +18,29 @@ body {
 .splitAction {
     width: 150px;
 }
+
+.matchDayButton {
+    width: 45px;
+}
+
+.firstLegs,
+.secondLegs {
+    width: 100px;
+}
+
+.center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.matchEncounter {
+    display: inline-block;
+    width: 60px;
+}
+
+.matchDivider {
+    text-align: center;
+    display: inline-block;
+    width: 20px;
+}

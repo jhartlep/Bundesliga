@@ -115,6 +115,7 @@ app.run(function ($httpBackend) {
     var regExIncludes = new RegExp('includes/(.+)');
     var regExPartials = new RegExp('partials/(.+)');
     var regExTypeahead = new RegExp('template/typeahead/(.+)');
+    var regExRest = new RegExp('http://localhost:8080/bundesliga/(.+)');
 
     var regExClub = new RegExp('rest/clubs/([0-9]+)');
     var regExMatch = new RegExp('rest/matchdays/([0-9]+)/([0-9]+)');
@@ -239,7 +240,19 @@ app.run(function ($httpBackend) {
 
     $httpBackend.whenGET({
         test: function (url) {
-            return (regExIncludes.test(url) || regExPartials.test(url) || regExTypeahead.test(url));
+            return (regExIncludes.test(url) || regExPartials.test(url) || regExTypeahead.test(url) || regExRest.test(url));
+        }
+    }).passThrough();
+
+    $httpBackend.whenPUT({
+        test: function (url) {
+            return (regExRest.test(url));
+        }
+    }).passThrough();
+
+    $httpBackend.whenPOST({
+        test: function (url) {
+            return (regExRest.test(url));
         }
     }).passThrough();
 });

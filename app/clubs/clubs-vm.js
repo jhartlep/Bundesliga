@@ -1,8 +1,9 @@
-var ClubsVM = function ($http) {
+var ClubsVM = function ($http, baseUrl) {
     var self = this;
 
     this.sortColumn = 'id';
     this.sortDirection = false;
+    this.clubs = [];
 
     this.sortType = {
         id: 'fa-sort-desc',
@@ -27,9 +28,15 @@ var ClubsVM = function ($http) {
         });
     };
 
-    $http.get('/rest/clubs').then(function (result) {
+    $http.get(baseUrl + "clubs").then(function (result) {
         self.clubs = result.data;
     }).catch(function (result) {
         console.log(result);
     });
+
+    //$http.get('/rest/clubs').then(function (result) {
+    //    self.clubs = result.data;
+    //}).catch(function (result) {
+    //    console.log(result);
+    //});
 };

@@ -2,11 +2,14 @@ var app = angular.module('BundesligaApp', [
     'ngRoute',
     'ngAnimate',
     'ngSanitize',
+    'ngResource',
 
     'angular-loading-bar',
     'ui.bootstrap',
     'ngMockE2E'
 ]);
+
+app.constant('baseUrl', 'http://localhost:8080/bundesliga/');
 
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -19,11 +22,11 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'ClubCtrl'
         })
         .when('/matchdays', {
-            templateUrl: '/partials/matchDays/routing.list.html',
+            templateUrl: '/partials/match-days/routing.list.html',
             controller: 'MatchDaysCtrl'
         })
         .when('/matchdays/:matchDay/:match', {
-            templateUrl: '/partials/matchDays/routing.result.html',
+            templateUrl: '/partials/match-days/routing.result.html',
             controller: 'ResultCtrl'
         })
         .when('/table', {
@@ -46,20 +49,31 @@ app.filter('ifUndefinedOrNull', function () {
     }
 });
 
-app.controller('ClubsCtrl', function ($scope, $http) {
-    $scope.vm = new ClubsVM($http);
+app.filter('matchDayRange', function () {
+    return function (input, start, total) {
+        start = parseInt(start);
+        total = parseInt(total);
+        for (var i = start; i < total; i++) {
+            input.push(i);
+        }
+        return input;
+    }
 });
 
-app.controller('ClubCtrl', function ($scope, $http, $routeParams) {
-    $scope.vm = new ClubVM($http, $routeParams);
+app.controller('ClubsCtrl', function ($scope, $http, baseUrl) {
+    $scope.vm = new ClubsVM($http, baseUrl);
 });
 
-app.controller('MatchDaysCtrl', function ($scope, $http, $route) {
-    $scope.vm = new MatchDaysVM($http, $route);
+app.controller('ClubCtrl', function ($scope, $http, $routeParams, baseUrl) {
+    $scope.vm = new ClubVM($http, $routeParams, baseUrl);
 });
 
-app.controller('ResultCtrl', function ($scope, $http, $routeParams, $location) {
-    $scope.vm = new ResultVM($http, $routeParams, $location);
+app.controller('MatchDaysCtrl', function ($scope, $http, $route, baseUrl) {
+    $scope.vm = new MatchDaysVM($http, $route, baseUrl);
+});
+
+app.controller('ResultCtrl', function ($scope, $http, $routeParams, $location, baseUrl) {
+    $scope.vm = new ResultVM($http, $routeParams, $location, baseUrl);
 });
 
 app.controller('TableCtrl', function ($scope, $http) {
