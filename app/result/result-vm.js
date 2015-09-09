@@ -19,6 +19,5 @@ var ResultVM = function ($http, $routeParams, $location, baseUrl) {
         }).catch(function (result) {
             console.log(result);
         });
-
     }
 };
