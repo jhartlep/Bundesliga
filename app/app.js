@@ -39,7 +39,7 @@ app.config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 });
 
-app.filter('ifUndefinedOrNull', function () {
+app.filter('notPlayedYet', function () {
     return function (input, defaultValue) {
         if (angular.isUndefined(input) || input === null || input === '') {
             return defaultValue;
@@ -76,8 +76,8 @@ app.controller('ResultCtrl', function ($scope, $http, $routeParams, $location, b
     $scope.vm = new ResultVM($http, $routeParams, $location, baseUrl);
 });
 
-app.controller('TableCtrl', function ($scope, $http) {
-    $scope.vm = new TableVM($http);
+app.controller('TableCtrl', function ($scope, $http, baseUrl) {
+    $scope.vm = new TableVM($http, baseUrl);
 });
 
 app.controller('NavbarCtrl', function ($scope, $location, $http) {

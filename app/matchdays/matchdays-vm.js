@@ -39,6 +39,7 @@ var MatchDaysVM = function ($http, $route, baseUrl) {
 
     this.matches = [];
     this.matchDay = [];
+    this.matchDays = [];
     this.hasMatches = false;
 
     this.selectMatchDay = function (id) {
@@ -57,50 +58,53 @@ var MatchDaysVM = function ($http, $route, baseUrl) {
 
     this.setBulkForMatchDay = function (matchDay) {
         var matchResults = {};
+        var matchDayId, matchId;
         angular.forEach(matchDay, function (match) {
             var index = _.findIndex(results, {matchDay: match.matchDay});
+            matchDayId = match.matchDay;
             matchResults = results[index];
             return false;
         });
 
-        console.log(self.matchDay);
+        angular.forEach(matchResults.results, function (matchResult) {
+            var index = _.findIndex(self.matchDay, {id: matchResult.match});
+            var match = self.matchDay[index];
+            matchId = matchResult.match;
 
+            match.goalsHome = matchResult.result.home;
+            match.goalsVisitor = matchResult.result.visitor;
 
-        //if (angular.equals({}, self.matchDay)) {
-        //    $http.get('/rest/bulk').then(function (result) {
-        //        angular.forEach(result.data, function (bulkMatchday, index) {
-        //            setResult(index, bulkMatchday);
-        //        });
-        //
-        //        $route.reload();
-        //    }).catch(function (result) {
-        //        console.log(result);
-        //    });
-        //} else {
-        //    $http.get('/rest/bulk/' + self.matchDay.id).then(function (result) {
-        //        setResult(self.matchDay.id - 1, result.data);
-        //
-        //        $route.reload();
-        //    }).catch(function (result) {
-        //        console.log(result);
-        //    });
-        //
-        //}
+            $http.put(baseUrl + 'matches/' + matchDayId + '/' + matchId, match).catch(function (result) {
+                console.log(result);
+            });
+        });
+
+        $route.reload();
     };
 
-    function setResult(index, bulkMatchday) {
-        angular.forEach(bulkMatchday, function (matchday) {
-            var id = index + 1;
-            $http.put('/rest/matchdays/' + id + '/' + matchday.match.id, matchday.result).catch(function (result) {
-                console.log(result);
-            })
-        });
-    }
+    this.setBulkForAll = function () {
+        $http.get(baseUrl + "matches").then(function (result) {
+            self.matchDays = result.data;
 
-    //$http.put(baseUrl + 'matches/' + $routeParams.matchDay + '/' + $routeParams.match, self.match).then(function () {
-    //    $location.path('/matchdays');
-    //}).catch(function (result) {
-    //    console.log(result);
-    //});
+            angular.forEach(results, function (matchResults) {
+                var matchDayId = matchResults.matchDay;
+                angular.forEach(matchResults.results, function (matchResult) {
+                    var index = _.findIndex(self.matchDays, {id: matchResult.match});
+                    var match = self.matchDays[index];
+                    var matchId = matchResult.match;
+
+                    match.goalsHome = matchResult.result.home;
+                    match.goalsVisitor = matchResult.result.visitor;
+
+                    $http.put(baseUrl + 'matches/' + matchDayId + '/' + matchId, match).catch(function (result) {
+                        console.log(result);
+                    });
+                });
+            });
+
+        }).catch(function (result) {
+            console.log(result);
+        });
+    };
 
 };

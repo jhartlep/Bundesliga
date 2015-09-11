@@ -1,4 +1,4 @@
-var TableVM = function ($http) {
+var TableVM = function ($http, baseUrl) {
     var self = this;
 
     this.sortColumn = ['-points', '-goalsDiff'];
@@ -31,7 +31,7 @@ var TableVM = function ($http) {
         });
     };
 
-    $http.get('/rest/clubs').then(function (result) {
+    $http.get(baseUrl + "clubs").then(function (result) {
         self.clubs = result.data;
     }).catch(function (result) {
         console.log(result);

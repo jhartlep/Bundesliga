@@ -33,7 +33,7 @@
                     </span>
 
                 </td>
-                <td>{{match.goalsHome | number |ifUndefinedOrNull:'-' }} : {{match.goalsVisitor | number |ifUndefinedOrNull:'-' }}</td>
+                <td>{{match.goalsHome | number |notPlayedYet:'-' }} : {{match.goalsVisitor | number |notPlayedYet:'-' }}</td>
                 <td><a href="/matchdays/{{match.matchDay}}/{{match.id}}">Ergebnis eintragen</a></td>
             </tr>
         </table>
