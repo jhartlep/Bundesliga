@@ -17,6 +17,7 @@ var NavbarVM = function ($location, $http) {
         if (undefined !== self.clubSelected.id) {
             $location.path('/club/' + self.clubSelected.id);
         }
+        self.clubSelected = undefined;
     };
 
     $http.get('/rest/clubs').then(function (result) {
